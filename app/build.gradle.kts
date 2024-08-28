@@ -54,6 +54,9 @@ dependencies {
     implementation(libs.compose.navigation)
     implementation(libs.androidx.lifecycle.viewModel)
 
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

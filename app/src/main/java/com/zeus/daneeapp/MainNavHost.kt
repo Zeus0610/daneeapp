@@ -7,9 +7,9 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.zeus.daneeapp.ui.screens.DeberSerScreen
 import com.zeus.daneeapp.ui.screens.DetailsScreen
 import com.zeus.daneeapp.ui.screens.HomeScreen
+import com.zeus.daneeapp.ui.screens.ListScreen
 
 @Composable
 fun MainNavHost(
@@ -33,7 +33,7 @@ fun MainNavHost(
         }
 
         composable(NavScreens.ListScreen.route) {
-            DeberSerScreen()
+            ListScreen()
         }
 
         composable(NavScreens.DetailsScreen.route,
