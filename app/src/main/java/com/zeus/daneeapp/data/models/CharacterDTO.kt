@@ -7,5 +7,7 @@ data class CharacterDTO(
     val species: String?,
     val gender: String?,
     val image: String?,
-    val created: String?
+    val created: String?,
+    val origin: LocationDTO?,
+    val location: LocationDTO?
 )

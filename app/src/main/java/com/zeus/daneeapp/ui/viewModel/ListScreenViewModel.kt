@@ -6,9 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zeus.daneeapp.domian.interactors.GetCharactersUseCase
 import com.zeus.daneeapp.ui.states.ListScreenState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ListScreenViewModel(
+@HiltViewModel
+class ListScreenViewModel @Inject constructor(
     private val getCharactersUseCase: GetCharactersUseCase
 ): ViewModel() {
 

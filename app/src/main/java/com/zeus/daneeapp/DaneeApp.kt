@@ -1,16 +1,12 @@
 package com.zeus.daneeapp
 
 import android.app.Application
-import com.zeus.daneeapp.data.api.RestClient
-import com.zeus.daneeapp.data.api.RickAndMortyServices
-import com.zeus.daneeapp.data.repository.CharactersRepositoryImpl
-import com.zeus.daneeapp.domian.interactors.GetCharactersUseCase
-import com.zeus.daneeapp.domian.repository.CharactersRepository
-import com.zeus.daneeapp.ui.viewModel.ListScreenViewModel
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class DaneeApp: Application() {
 
-    private val retrofitClient = RestClient.create("https://rickandmortyapi.com/api/")
+    /*private val retrofitClient = RestClient.create("https://rickandmortyapi.com/api/")
 
     fun getRetrofitClient(): RickAndMortyServices {
         return retrofitClient
@@ -24,7 +20,15 @@ class DaneeApp: Application() {
         return GetCharactersUseCase(getCharactersRepository())
     }
 
+    fun getCharacterByIdUseCase(): GetCharacterByIdUseCase {
+        return GetCharacterByIdUseCase(getCharactersRepository())
+    }
+
     fun getListScreenViewModel(): ListScreenViewModel {
         return ListScreenViewModel(getGetCharactersUseCase())
     }
+
+    fun getDetailsViewModel(): DetailsViewModel {
+        return DetailsViewModel(getCharacterByIdUseCase())
+    }*/
 }

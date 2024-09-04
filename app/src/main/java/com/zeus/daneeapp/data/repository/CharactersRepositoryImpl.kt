@@ -13,4 +13,9 @@ class CharactersRepositoryImpl(
         val response = retrofitClient.getCharacters()
         return response.results?: emptyList()
     }
+
+    override suspend fun getCharacterById(id: String): CharacterDTO? {
+        val response = retrofitClient.getCharacterById(id)
+        return response
+    }
 }

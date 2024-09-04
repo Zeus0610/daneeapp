@@ -1,9 +1,6 @@
 package com.zeus.daneeapp.ui.components
 
-import android.media.Image
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -22,10 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.ParagraphStyle
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,6 +28,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.zeus.daneeapp.R
+import com.zeus.daneeapp.domian.models.Location
 
 @Preview(backgroundColor = 0xFFFFFF, showBackground = true)
 @Composable
@@ -43,7 +39,8 @@ fun PersonItem(
     species: String = "",
     gender: String = "",
     image: String = "",
-    created: String = ""
+    created: String = "",
+    location: Location = Location()
 ) {
     var genero: String = ""
     if (gender == "Male"){
@@ -99,7 +96,7 @@ fun PersonItem(
                     ),
                 )
                 Text(
-                    text = "$status - $species",
+                    text = stringResource(R.string.status_specie, status, species),
                     color = Color.White,
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Bold,
@@ -120,16 +117,26 @@ fun PersonItem(
                     verticalArrangement = Arrangement.Top,
 
                 ) {
-//                    Text(
-//                        text = "Última ubicación:",
-//                        color = Color.LightGray,
-//                        fontSize = 13.sp,
-//                        style = LocalTextStyle.current.merge(
-//                            TextStyle(
-//                                lineHeight = 0.5.em,
-//                            ),
-//                        ),
-//                    )
+                    Text(
+                        text = stringResource(R.string.last_location, location.name),
+                        color = Color.LightGray,
+                        fontSize = 13.sp,
+                        style = LocalTextStyle.current.merge(
+                            /*TextStyle(
+                                lineHeight = 0.5.em,
+                            ),*/
+                        ),
+                    )
+                    /*Text(
+                        text = location.name,
+                        color = Color.LightGray,
+                        fontSize = 13.sp,
+                        style = LocalTextStyle.current.merge(
+                            TextStyle(
+                                lineHeight = 0.5.em,
+                            ),
+                        ),
+                    )*/
                     Text(
                         text = "Género:",
                         color = Color.LightGray,

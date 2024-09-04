@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DaneeApp</string>
+    <string name="status_specie">%s - %s</string>
+    <string name="last_location">Última ubicación:\n%s</string>
 </resources>

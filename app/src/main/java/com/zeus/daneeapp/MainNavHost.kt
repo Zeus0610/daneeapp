@@ -33,22 +33,26 @@ fun MainNavHost(
         }
 
         composable(NavScreens.ListScreen.route) {
-            ListScreen()
+            ListScreen(
+                onNavigateToDetails = { characterId ->
+                    navController.navigate(NavScreens.DetailsScreen.createRoute(characterId))
+                }
+            )
         }
 
         composable(NavScreens.DetailsScreen.route,
             arguments = listOf(
-                navArgument("message") {
+                navArgument("characterId") {
                     defaultValue = ""
                     type = NavType.StringType
-                    nullable = true
+                    nullable = false
                 }
             )
         ) { backStack ->
-            val message = backStack.arguments?.getString("message")?: ""
+            val characterId = backStack.arguments?.getString("characterId")?: ""
 
             DetailsScreen(
-                message = message
+                characterId = characterId
             )
         }
     }
@@ -57,7 +61,7 @@ fun MainNavHost(
 sealed class NavScreens(val route: String) {
     data object HomeScreen: NavScreens("Home")
     data object ListScreen: NavScreens("List")
-    data object DetailsScreen: NavScreens("Details?message={message}") { /** algo/path,  algo?message=Hola-Mundo     */
-        fun createRoute(message: String) = "Details?message=$message"
+    data object DetailsScreen: NavScreens("Details?characterId={characterId}") { /** algo/path,  algo?message=Hola-Mundo     */
+        fun createRoute(characterId: String) = "Details?characterId=$characterId"
     }
 }

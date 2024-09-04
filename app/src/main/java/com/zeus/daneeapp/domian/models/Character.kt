@@ -8,5 +8,7 @@ data class Character(
     val gender: String = "",
     val image: String = "",
     val created: String = "",
-    val episode: String = ""
+    val episode: String = "",
+    val location: Location = Location(),
+    val origin: Location = Location()
 )

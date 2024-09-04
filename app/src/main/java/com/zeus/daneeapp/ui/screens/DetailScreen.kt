@@ -2,13 +2,20 @@ package com.zeus.daneeapp.ui.screens
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.LaunchedEffect
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.zeus.daneeapp.ui.viewModel.DetailsViewModel
 
 @Composable
 fun DetailsScreen(
-    message: String,
-    viewModel: DetailsViewModel = viewModel()
+    characterId: String,
+    viewModel: DetailsViewModel = hiltViewModel()
 ) {
-    Text(text = message)
+    val state = viewModel.state.value
+
+    LaunchedEffect(Unit) {
+        viewModel.getCharacterById(characterId)
+    }
+
+    Text(text = state.character.name)
 }

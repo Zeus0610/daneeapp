@@ -1,6 +1,6 @@
 package com.zeus.daneeapp.ui.screens
 
-import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,20 +14,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.zeus.daneeapp.DaneeApp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.zeus.daneeapp.ui.components.PersonItem
 import com.zeus.daneeapp.ui.viewModel.ListScreenViewModel
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ListScreen(
     modifier: Modifier = Modifier,
-    viewModel: ListScreenViewModel = viewModel {
-        val application = this[APPLICATION_KEY]
-        (application as DaneeApp).getListScreenViewModel()
-    }
+    viewModel: ListScreenViewModel = hiltViewModel(),
+    onNavigateToDetails: (String) -> Unit = {}
 ) {
     val state = viewModel.state.value
 
@@ -50,13 +45,17 @@ fun ListScreen(
 
             items(state.characters) { character ->
                 PersonItem(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth()
+                        .clickable {
+                            onNavigateToDetails.invoke(character.id)
+                        },
                     name = character.name,
                     status = character.status,
                     species = character.species,
                     gender = character.gender,
                     image = character.image,
-                    created = character.created
+                    created = character.created,
+                    location = character.location
                 )
             }
         }

@@ -4,4 +4,6 @@ import com.zeus.daneeapp.data.models.CharacterDTO
 
 interface CharactersRepository {
     suspend fun getCharacters(): List<CharacterDTO>
+
+    suspend fun getCharacterById(id:String): CharacterDTO?
 }
