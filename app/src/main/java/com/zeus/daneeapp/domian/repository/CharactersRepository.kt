@@ -6,4 +6,6 @@ interface CharactersRepository {
     suspend fun getCharacters(): List<CharacterDTO>
 
     suspend fun getCharacterById(id:String): CharacterDTO?
+
+    suspend fun addCharacterToFavorites(character: CharacterDTO)
 }

@@ -5,6 +5,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.zeus.daneeapp.domian.interactors.AddCharacterToFavoritesUseCase
 import com.zeus.daneeapp.domian.interactors.GetCharacterByIdUseCase
 import com.zeus.daneeapp.ui.states.DetailsScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
-    private val getCharacterByIdUseCase: GetCharacterByIdUseCase
+    private val getCharacterByIdUseCase: GetCharacterByIdUseCase,
+    private val addCharacterToFavoritesUseCase: AddCharacterToFavoritesUseCase
 ): ViewModel() {
 
     private val _state: MutableState<DetailsScreenState> = mutableStateOf(DetailsScreenState())
@@ -27,5 +29,9 @@ class DetailsViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    fun addToFavorites() = viewModelScope.launch {
+        addCharacterToFavoritesUseCase.invoke(_state.value.character)
     }
 }

@@ -1,11 +1,16 @@
 package com.zeus.daneeapp.data.repository
 
 import com.zeus.daneeapp.data.api.RickAndMortyServices
+import com.zeus.daneeapp.data.mappers.toCharacterDTO
+import com.zeus.daneeapp.data.mappers.toCharacterEntity
 import com.zeus.daneeapp.data.models.CharacterDTO
 import com.zeus.daneeapp.domian.repository.CharactersRepository
+import com.zeus.roomdb.dao.CharacterDao
+import javax.inject.Inject
 
-class CharactersRepositoryImpl(
-    private val retrofitClient: RickAndMortyServices
+class CharactersRepositoryImpl @Inject constructor(
+    private val retrofitClient: RickAndMortyServices,
+    private val characterDao: CharacterDao
 ): CharactersRepository {
 
 
@@ -15,7 +20,11 @@ class CharactersRepositoryImpl(
     }
 
     override suspend fun getCharacterById(id: String): CharacterDTO? {
-        val response = retrofitClient.getCharacterById(id)
-        return response
+        val characterLocal = characterDao.getCharacterById(id)
+        return characterLocal?.toCharacterDTO() ?: retrofitClient.getCharacterById(id)
+    }
+
+    override suspend fun addCharacterToFavorites(character: CharacterDTO) {
+        characterDao.addCharacterToFavorites(character.toCharacterEntity())
     }
 }

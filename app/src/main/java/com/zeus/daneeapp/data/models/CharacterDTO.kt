@@ -9,5 +9,6 @@ data class CharacterDTO(
     val image: String?,
     val created: String?,
     val origin: LocationDTO?,
-    val location: LocationDTO?
+    val location: LocationDTO?,
+    val isFavorite: Boolean = false
 )

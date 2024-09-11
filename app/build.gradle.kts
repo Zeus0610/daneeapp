@@ -53,6 +53,9 @@ android {
 
 dependencies {
 
+    implementation(project(":RoomDB"))
+    api(libs.room.runtime)
+
     implementation(libs.compose.navigation)
     implementation(libs.androidx.lifecycle.viewModel)
 

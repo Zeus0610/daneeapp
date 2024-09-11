@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "DaneeApp"
 include(":app")
+include(":RoomDB")

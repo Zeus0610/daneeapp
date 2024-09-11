@@ -10,5 +10,6 @@ data class Character(
     val created: String = "",
     val episode: String = "",
     val location: Location = Location(),
-    val origin: Location = Location()
+    val origin: Location = Location(),
+    val isFavorite: Boolean = false
 )

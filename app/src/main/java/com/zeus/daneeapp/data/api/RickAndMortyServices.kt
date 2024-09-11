@@ -11,5 +11,5 @@ interface RickAndMortyServices {
     suspend fun getCharacters(): ApiResponse
 
     @GET("character/{id}")
-    suspend fun getCharacterById(@Path("id") id: String): CharacterDTO
+    suspend fun getCharacterById(@Path("id") id: String): CharacterDTO?
 }
