@@ -2,7 +2,7 @@ package com.zeus.daneeapp.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -24,7 +24,7 @@ fun DaneeTopBar(
                 modifier = Modifier.clickable {
                     navigateBack.invoke()
                 },
-                imageVector = Icons.Default.ArrowBack,
+                imageVector = Icons.AutoMirrored.Default.ArrowBack,
                 contentDescription = "back"
             )
         }

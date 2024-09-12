@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.zeus.roomdb.dao.CharacterDao
 import com.zeus.roomdb.entities.CharacterEntity
 
-@Database(entities = [CharacterEntity::class], version = 1)
+@Database(entities = [CharacterEntity::class], version = 1, exportSchema = false)
 abstract class DaneeDB: RoomDatabase() {
 
     abstract fun characterDao(): CharacterDao
