@@ -18,6 +18,9 @@ appcompat = "1.7.0"
 material = "1.12.0"
 room = "2.6.1"
 ksp = "2.0.20-1.0.25"
+mokito = "5.13.0"
+mokito-kotlin = "5.4.0"
+kotlin-coroutines = "1.8.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,6 +50,9 @@ material = { group = "com.google.android.material", name = "material", version.r
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+mokito-core = { group="org.mockito", name="mockito-core", version.ref="mokito" }
+mokito-kotlin = { group="org.mockito.kotlin", name="mockito-kotlin", version.ref="mokito-kotlin" }
+kotlin-coroutines-test = { group="org.jetbrains.kotlinx", name="kotlinx-coroutines-test", version.ref="kotlin-coroutines" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
