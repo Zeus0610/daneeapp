@@ -9,6 +9,7 @@ import com.zeus.daneeapp.domian.interactors.AddCharacterToFavoritesUseCase
 import com.zeus.daneeapp.domian.interactors.GetCharacterByIdUseCase
 import com.zeus.daneeapp.ui.states.DetailsScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,7 +23,13 @@ class DetailsViewModel @Inject constructor(
     val state: State<DetailsScreenState> = _state
 
     fun getCharacterById(id: String) = viewModelScope.launch {
-        getCharacterByIdUseCase.invoke(id).collect { character ->
+        getCharacterByIdUseCase.invoke(id)
+            .catch {
+                _state.value = _state.value.copy(
+                    hasError = true
+                )
+            }
+            .collect { character ->
             character?.let {
                 _state.value = _state.value.copy(
                     character = it
